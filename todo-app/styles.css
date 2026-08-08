@@ -1,0 +1,25 @@
+:root{--bg:#f7f7f8;--card:#ffffff;--accent:#4f46e5;--danger:#ef4444}
+*{box-sizing:border-box;font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial}
+html,body{height:100%;margin:0;background:var(--bg)}
+.container{max-width:520px;margin:72px auto;padding:24px;background:var(--card);border-radius:10px;box-shadow:0 6px 24px rgba(16,24,40,0.08)}
+h1{margin:0 0 16px;font-size:24px;color:#111827}
+.input-row{display:flex;gap:8px;margin-bottom:16px}
+#todo-input{flex:1;padding:10px 12px;border:1px solid #e5e7eb;border-radius:8px;font-size:14px}
+#add-btn{background:var(--accent);color:#fff;border:none;padding:10px 14px;border-radius:8px;cursor:pointer}
+#add-btn:hover{opacity:.95}
+#todo-list{list-style:none;padding:0;margin:0}
+#todo-list li{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border:1px solid #f3f4f6;border-radius:8px;margin-bottom:8px;background:#fff}
+.todo-text{flex:1;margin-right:12px;color:#111827}
+.todo-text{cursor:pointer}
+.todo-text.completed{text-decoration:line-through;color:#6b7280;opacity:.7}
+.delete-btn{background:transparent;border:1px solid #fee2e2;color:var(--danger);padding:6px 8px;border-radius:6px;cursor:pointer}
+.delete-btn:hover{background:#fff6f6}
+
+/* Checkbox styling */
+.todo-checkbox{width:18px;height:18px;margin-right:12px;flex:0 0 auto}
+
+/* inline edit input */
+.edit-input{flex:1;padding:6px 8px;border:1px solid #e5e7eb;border-radius:6px;font-size:14px}
+
+.edit-btn{background:transparent;border:1px solid #e5e7eb;color:#374151;padding:6px 8px;border-radius:6px;cursor:pointer;margin-right:8px}
+.edit-btn:hover{background:#f3f4f6}
