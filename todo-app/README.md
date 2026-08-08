@@ -16,5 +16,5 @@ Features:
 PowerShell example to open:
 
 ```powershell
-Start-Process 'C:\Users\t2b19\OneDrive\Documents\GitHub\RandomTask\todo-app\index.html'
+Start-Process 'your_start_folder\todo-app\index.html'
 ```
