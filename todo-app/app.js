@@ -1,8 +1,10 @@
 const input = document.getElementById('todo-input');
 const addBtn = document.getElementById('add-btn');
 const list = document.getElementById('todo-list');
+const themeToggle = document.getElementById('theme-toggle');
 
 const STORAGE_KEY = 'todos';
+const THEME_KEY = 'theme';
 
 function saveTodos(todos){
   localStorage.setItem(STORAGE_KEY, JSON.stringify(todos || []));
@@ -15,6 +17,33 @@ function loadTodos(){
   }catch{
     return [];
   }
+}
+
+function getDefaultTheme(){
+  return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+
+function saveTheme(theme){
+  localStorage.setItem(THEME_KEY, theme);
+}
+
+function loadTheme(){
+  const stored = localStorage.getItem(THEME_KEY);
+  return stored === 'dark' || stored === 'light' ? stored : getDefaultTheme();
+}
+
+function applyTheme(theme){
+  document.body.classList.toggle('dark-theme', theme === 'dark');
+  if(themeToggle){
+    themeToggle.textContent = theme === 'dark' ? 'Light mode' : 'Dark mode';
+    themeToggle.setAttribute('aria-label', theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
+  }
+}
+
+function toggleTheme(){
+  const nextTheme = document.body.classList.contains('dark-theme') ? 'light' : 'dark';
+  applyTheme(nextTheme);
+  saveTheme(nextTheme);
 }
 
 function createTodoItem(todo){
@@ -120,6 +149,10 @@ function addTodo(){
 
 addBtn.addEventListener('click', addTodo);
 input.addEventListener('keydown', (e)=>{ if(e.key === 'Enter') addTodo(); });
+if(themeToggle){
+  themeToggle.addEventListener('click', toggleTheme);
+}
 
-// initial render
+// initial setup
+applyTheme(loadTheme());
 renderTodos();
